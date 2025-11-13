@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DAVID'S ARETE — Rest Assured</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="DAVID'S ARETE — Painting, electrical, spraying, wall skimming. Rest Assured.">
+  <style>
+    :root{
+      --accent:#f59e0b; /* amber-ish */
+      --dark:#0f172a; /* slate-900 */
+      --muted:#6b7280; /* gray */
+      --bg:#fbfdff;
+      --card:#ffffff;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--dark);}
+    a{color:inherit;text-decoration:none}
+    header{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(255,255,255,0.6);border-bottom:1px solid rgba(15,23,42,0.04);}
+    .container{max-width:1100px;margin:0 auto;padding:20px;}
+
+    /* NAV */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ef4444);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    .navlinks{display:flex;gap:18px;align-items:center}
+    .cta{background:var(--accent);padding:10px 14px;border-radius:10px;color:white;font-weight:600}
+    .menu-toggle{display:none}
+
+    /* HERO */
+    .hero{padding:60px 0;display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.8),rgba(255,255,255,0.6));padding:28px;border-radius:14px;box-shadow:0 6px 30px rgba(15,23,42,0.06)}
+    h1{font-size:clamp(28px,4vw,42px);margin:0 0 12px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:24px}
+    .service{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(15,23,42,0.04)}
+    .service h4{margin:8px 0 6px}
+    .service p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:18px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .contact form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.08);font-size:14px}
+    button{padding:10px 12px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+
+    footer{padding:28px 0 60px;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .contact{grid-template-columns:1fr}
+      .navlinks{display:none}
+      .menu-toggle{display:block}
+    }
+
+    /* small niceties */
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,0.04);font-weight:600}
+    .muted{color:var(--muted)}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">DA</div>
+        <div>
+          <div style="font-weight:800">DAVID'S ARETE</div>
+          <div class="muted" style="font-size:13px">Rest Assured • Painting • Electrical • Spraying</div>
+        </div>
+      </div>
+      <nav>
+        <div class="navlinks">
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a class="cta" href="tel:0532622068">Call: 0532622068</a>
+        </div>
+        <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <span class="badge">Local in Oyarifa • Accra</span>
+        <h1>DAVID'S ARETE — Professional Painting & Electrical Services</h1>
+        <p class="lead">We transform homes and commercial spaces with expert painting, electrical installations, spraying and wall skimming. Quality work, timely delivery — Rest Assured.</p>
+        <div class="services" id="services">
+          <div class="service">
+            <div style="font-size:18px;font-weight:700">Exterior & Interior Painting</div>
+            <p>Residential and commercial painting, color consultation and surface preparation.</p>
+          </div>
+          <div class="service">
+            <div style="font-size:18px;font-weight:700">Electrical Work</div>
+            <p>Wiring, installations, maintenance and repairs. Experienced with local standards.</p>
+          </div>
+          <div class="service">
+            <div style="font-size:18px;font-weight:700">Spraying & Finishes</div>
+            <p>High-quality spraying for smooth, durable finishes on furniture and walls.</p>
+          </div>
+          <div class="service">
+            <div style="font-size:18px;font-weight:700">Wall Skimming & Decor</div>
+            <p>Skimming, textures and decorative wall treatments to make spaces stand out.</p>
+          </div>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="cta" href="#contact">Get a Quote</a>
+          <a href="#gallery" style="align-self:center">See our Work →</a>
+        </div>
+      </div>
+
+      <aside>
+        <div style="border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,0.08)">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=4f1a7ed03e0f7a9f3f3a2b1b2d6d1a36" alt="painting" style="width:100%;height:100%;max-height:420px;object-fit:cover;display:block">
+        </div>
+        <div style="margin-top:12px;padding:14px;background:var(--card);border-radius:12px;border:1px solid rgba(15,23,42,0.04)">
+          <div style="font-weight:700">Quick Info</div>
+          <div class="muted" style="font-size:14px;margin-top:6px">Phone: <a href="tel:0532622068">0532622068</a><br>Email: <a href="mailto:Kingdavidgodlead@gmail.com">Kingdavidgodlead@gmail.com</a><br>Location: Oyarifa, Accra</div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="gallery">
+      <h3 style="margin-top:28px">Gallery</h3>
+      <p class="muted">Recent projects — tap an image to open it in a new tab.</p>
+      <div class="gallery" style="margin-top:12px">
+        <!-- Placeholder images: replace with your own project photos -->
+        <a href="https://images.unsplash.com/photo-1534751516642-a1af1ef1f0b6" target="_blank"><img src="https://images.unsplash.com/photo-1534751516642-a1af1ef1f0b6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project1"></a>
+        <a href="https://images.unsplash.com/photo-1531297484001-80022131f5a1" target="_blank"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project2"></a>
+        <a href="https://images.unsplash.com/photo-1540574163026-643ea20ade25" target="_blank"><img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project3"></a>
+        <a href="#" target="_blank"><img src="https://images.unsplash.com/photo-1505691723518-36a0f6d4a1b5?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project4"></a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h3 style="margin-top:28px">About DAVID'S ARETE</h3>
+      <p class="muted">DAVID'S ARETE is a local Accra-based company specializing in painting, electrical installations, spraying and wall skimming. With experience gained working with both residential and commercial clients, we focus on high-quality finishes, dependable timelines, and professional customer service. Our slogan: "Rest Assured" — we stand by our work.</p>
+    </section>
+
+    <section id="contact">
+      <h3 style="margin-top:28px">Contact & Get a Quote</h3>
+      <div class="contact">
+        <div>
+          <p class="muted">Send us a quick message — we typically respond within 1 business day.</p>
+          <form id="contactForm">
+            <input type="text" id="name" placeholder="Your name" required>
+            <input type="email" id="email" placeholder="Your email" required>
+            <input type="tel" id="phone" placeholder="Phone (optional)">
+            <input type="text" id="service" placeholder="Service interested in (e.g., painting)" required>
+            <textarea id="message" rows="4" placeholder="Brief description / address / budget (optional)"></textarea>
+            <div style="display:flex;gap:8px">
+              <button type="submit" style="background:var(--accent);color:white">Send Message</button>
+              <button type="button" onclick="openWhatsApp()" style="border:1px solid rgba(15,23,42,0.06);">WhatsApp</button>
+            </div>
+            <div id="formStatus" style="margin-top:8px;color:var(--muted);font-size:14px"></div>
+          </form>
+        </div>
+        <div style="padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff, #fbfbff);border:1px solid rgba(15,23,42,0.04)">
+          <div style="font-weight:700">Visit or Call</div>
+          <p class="muted" style="margin-top:8px">Oyarifa, Accra<br>Phone: <a href="tel:0532622068">0532622068</a><br>Email: <a href="mailto:Kingdavidgodlead@gmail.com">Kingdavidgodlead@gmail.com</a></p>
+
+          <div style="margin-top:12px">
+            <div style="font-weight:700">Operating Hours</div>
+            <div class="muted" style="margin-top:6px">Mon — Sat: 8:00 AM — 6:00 PM<br>Sun: Closed (by appointment)</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div style="font-weight:700">Follow us</div>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <a href="#" aria-label="Facebook">Facebook</a>
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="WhatsApp">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <strong>DAVID'S ARETE</strong> — Rest Assured</div>
+        <div class="muted">Built for local contractors • Made with care</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const nav = document.querySelector('.navlinks');
+      if(nav.style.display === 'flex') nav.style.display = 'none'; else nav.style.display = 'flex';
+    }
+
+    function openWhatsApp(){
+      const phone = '233532622068'; // Ghana country code 233 + number without leading 0
+      const text = encodeURIComponent('Hello, I would like a quote from DAVID\\'S ARETE.');
+      window.open('https://wa.me/' + phone + '?text=' + text,'_blank');
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !service){
+        document.getElementById('formStatus').textContent = 'Please fill the required fields.';
+        return;
+      }
+      // Create a mailto as a lightweight fallback for contact submissions
+      const subject = encodeURIComponent('Website Quote Request — ' + service);
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nService: ' + service + '\nMessage: ' + message);
+      const mailto = 'mailto:Kingdavidgodlead@gmail.com?subject=' + subject + '&body=' + body;
+      document.getElementById('formStatus').textContent = 'Opening your email client to send the message...';
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
